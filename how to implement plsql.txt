@@ -1,0 +1,9 @@
+1.set serveroutput on
+
+2.@--path--
+eg:
+@"F:\Sarath\plsql\day1-.txt";
+
+
+3.edit d:/pls/p2.sql
+

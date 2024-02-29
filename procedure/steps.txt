@@ -1,0 +1,7 @@
+...............................................
+show errors
+-this function isd used to see errors in procedure
+.................................................
+to execute procedure
+
+ exicute sum1(6,7)

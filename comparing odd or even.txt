@@ -1,0 +1,10 @@
+DECLARE
+   num1 NUMBER;
+BEGIN
+   num1 := &num1; -- Assign a value to num1 using a substitution variable
+   IF MOD(num1, 2) = 0 THEN
+      dbms_output.put_line('Even Number: ' || num1);
+   ELSE
+      dbms_output.put_line('Odd Number: ' || num1);
+   END IF;
+END;

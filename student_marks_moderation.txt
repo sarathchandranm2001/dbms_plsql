@@ -1,0 +1,13 @@
+declare 
+moder number(5);
+s_id varchar2(10);
+begin
+s_id:=&s_id;
+select marks_1+marks_2+marks_3 into moder from student_mark where s_id=sid;
+if moder>=45 and moder<=50 then 
+update student_mark set marks_1=marks_1 + 5 where s_id=sid;
+dbms_output.put_line('Moderation Applied');
+else
+dbms_output.put_line('No moderation');
+end if;
+end;

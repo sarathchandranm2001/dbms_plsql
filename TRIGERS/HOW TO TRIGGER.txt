@@ -1,0 +1,392 @@
+
+SQL> select * from emp_tab;
+
+ENO   ENAME                      ESAL JOB
+----- -------------------- ---------- --------------------
+E01   SHARISSA                  50000 MANAGER
+E02   VARGHESE                  70000 ANALYST
+E03   URMILA                    90000 MANAGER
+E04   SUDHA                      1000 CLERK
+E05   SALIM                     10000 PROGRAMMER
+E06   SANJAY                    20000 PROGRAMMER
+
+6 rows selected.
+
+SQL> @"F:\sarath\TRIGERS\trig1.txt"
+  7  /
+
+Trigger created.
+
+SQL> DELETE FROM EMP_TAB WHERE ENO='E1';
+
+0 rows deleted.
+
+SQL> DELETE FROM EMP_TAB WHERE ENO='E01';
+
+1 row deleted.
+
+SQL> SELECT * FROM EMP_TAB;
+
+ENO   ENAME                      ESAL JOB
+----- -------------------- ---------- --------------------
+E02   VARGHESE                  70000 ANALYST
+E03   URMILA                    90000 MANAGER
+E04   SUDHA                      1000 CLERK
+E05   SALIM                     10000 PROGRAMMER
+E06   SANJAY                    20000 PROGRAMMER
+
+SQL> SELECT * FROM EMP_X;
+
+ENO   ENAME                      ESAL JOB                  X_DATE
+----- -------------------- ---------- -------------------- ---------
+E01   SHARISSA                  50000 MANAGER              09-OCT-23
+
+SQL> DELETE FROM EMP_TAB WHERE ENO='E04';
+
+1 row deleted.
+
+SQL> SELECT * FROM EMP_X;
+
+ENO   ENAME                      ESAL JOB                  X_DATE
+----- -------------------- ---------- -------------------- ---------
+E01   SHARISSA                  50000 MANAGER              09-OCT-23
+E04   SUDHA                      1000 CLERK                09-OCT-23
+
+SQL> SELECT * FROM EMP_TAB;
+
+ENO   ENAME                      ESAL JOB
+----- -------------------- ---------- --------------------
+E02   VARGHESE                  70000 ANALYST
+E03   URMILA                    90000 MANAGER
+E05   SALIM                     10000 PROGRAMMER
+E06   SANJAY                    20000 PROGRAMMER
+
+SQL> DELETE FROM EMP_TAB WHERE ENO='E05';
+
+1 row deleted.
+
+SQL> SELECT * FROM EMP_TAB;
+
+ENO   ENAME                      ESAL JOB
+----- -------------------- ---------- --------------------
+E02   VARGHESE                  70000 ANALYST
+E03   URMILA                    90000 MANAGER
+E06   SANJAY                    20000 PROGRAMMER
+
+SQL> SELECT * FROM EMP_X;
+
+ENO   ENAME                      ESAL JOB                  X_DATE
+----- -------------------- ---------- -------------------- ---------
+E01   SHARISSA                  50000 MANAGER              09-OCT-23
+E04   SUDHA                      1000 CLERK                09-OCT-23
+E05   SALIM                     10000 PROGRAMMER           09-OCT-23
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> @"F:\sarath\TRIGERS\TRIG2.txt"
+ 12  /
+
+Warning: Trigger created with compilation errors.
+
+SQL> SHOW ERRORS;
+Errors for TRIGGER TRIG1:
+
+LINE/COL ERROR
+-------- -----------------------------------------------------------------
+5/17     PL/SQL: SQL Statement ignored
+5/37     PL/SQL: ORA-00928: missing SELECT keyword
+9/4      PLS-00103: Encountered the symbol ";" when expecting one of the
+         following:
+         if
+
+SQL> @INSERT INTO EMP_X VALUES(:OLD.ENO,:OLD.ENAME,:OLD.ESAL,:OLD.JOB,SYSDATE);
+SP2-0310: unable to open file "INSERT.sql"
+SQL> /
+
+Warning: Trigger created with compilation errors.
+
+SQL> @"F:\sarath\TRIGERS\TRIG2.txt"
+  9  /
+
+Warning: Trigger created with compilation errors.
+
+SQL> SHOW ERRORS
+Errors for TRIGGER TRIG1:
+
+LINE/COL ERROR
+-------- -----------------------------------------------------------------
+3/19     PLS-00103: Encountered the symbol "INSERT" when expecting one of
+         the following:
+         . ( * @ % & = - + < / > at in is mod remainder not rem then
+         <an exponent (**)> <> or != or ~= >= <= <> and or like like2
+         like4 likec between || multiset member submultiset
+         The symbol "then" was substituted for "INSERT" to continue.
+
+6/4      PLS-00103: Encountered the symbol ";" when expecting one of the
+         following:
+         if
+
+SQL> @"F:\sarath\TRIGERS\TRIG2.txt"
+  9  /
+
+Warning: Trigger created with compilation errors.
+
+SQL> SHOW ERRORS
+Errors for TRIGGER TRIG1:
+
+LINE/COL ERROR
+-------- -----------------------------------------------------------------
+3/19     PLS-00103: Encountered the symbol "INSERT" when expecting one of
+         the following:
+         . ( * @ % & = - + < / > at in is mod remainder not rem then
+         <an exponent (**)> <> or != or ~= >= <= <> and or like like2
+         like4 likec between || multiset member submultiset
+         The symbol "then" was substituted for "INSERT" to continue.
+
+3/39     PLS-00103: Encountered the symbol "" when expecting one of the
+         following:
+         ( select <an identifier>
+         <a double-quoted delimited-identifier>
+
+LINE/COL ERROR
+-------- -----------------------------------------------------------------
+         The symbol "select" was substituted for "" to continue.
+
+3/85     PLS-00103: Encountered the symbol ")" when expecting one of the
+         following:
+         . ( , * @ % & - + / at mod remainder rem <an identifier>
+         <a double-quoted delimited-identifier> <an exponent (**)> as
+         from || multiset
+
+6/4      PLS-00103: Encountered the symbol ";" when expecting one of the
+         following:
+         if
+
+LINE/COL ERROR
+-------- -----------------------------------------------------------------
+
+SQL> SHOW ERRORS;
+Errors for TRIGGER TRIG1:
+
+LINE/COL ERROR
+-------- -----------------------------------------------------------------
+3/19     PLS-00103: Encountered the symbol "INSERT" when expecting one of
+         the following:
+         . ( * @ % & = - + < / > at in is mod remainder not rem then
+         <an exponent (**)> <> or != or ~= >= <= <> and or like like2
+         like4 likec between || multiset member submultiset
+         The symbol "then" was substituted for "INSERT" to continue.
+
+3/39     PLS-00103: Encountered the symbol "" when expecting one of the
+         following:
+         ( select <an identifier>
+         <a double-quoted delimited-identifier>
+
+LINE/COL ERROR
+-------- -----------------------------------------------------------------
+         The symbol "select" was substituted for "" to continue.
+
+3/85     PLS-00103: Encountered the symbol ")" when expecting one of the
+         following:
+         . ( , * @ % & - + / at mod remainder rem <an identifier>
+         <a double-quoted delimited-identifier> <an exponent (**)> as
+         from || multiset
+
+6/4      PLS-00103: Encountered the symbol ";" when expecting one of the
+         following:
+         if
+
+LINE/COL ERROR
+-------- -----------------------------------------------------------------
+
+SQL> @"F:\sarath\TRIGERS\TRIG2.txt"
+  9  \
+ 10  \
+ 11  \
+ 12  \
+ 13  \
+ 14  \
+ 15  \
+ 16  \/
+ 17  /
+
+Warning: Trigger created with compilation errors.
+
+SQL> @"F:\sarath\TRIGERS\TRIG2.txt"
+  9  /
+
+Warning: Trigger created with compilation errors.
+
+SQL> SHOW ERRORS;
+Errors for TRIGGER TRIG1:
+
+LINE/COL ERROR
+-------- -----------------------------------------------------------------
+3/17     PLS-00103: Encountered the symbol "INSERT" when expecting one of
+         the following:
+         . ( * @ % & = - + < / > at in is mod remainder not rem then
+         <an exponent (**)> <> or != or ~= >= <= <> and or like like2
+         like4 likec between || multiset member submultiset
+         The symbol "then" was substituted for "INSERT" to continue.
+
+3/37     PLS-00103: Encountered the symbol "" when expecting one of the
+         following:
+         ( select <an identifier>
+         <a double-quoted delimited-identifier>
+
+LINE/COL ERROR
+-------- -----------------------------------------------------------------
+         The symbol "select" was substituted for "" to continue.
+
+3/83     PLS-00103: Encountered the symbol ")" when expecting one of the
+         following:
+         . ( , * @ % & - + / at mod remainder rem <an identifier>
+         <a double-quoted delimited-identifier> <an exponent (**)> as
+         from || multiset
+
+SQL> @"F:\sarath\TRIGERS\TRIG2.txt"
+ 12  /
+
+Warning: Trigger created with compilation errors.
+
+SQL> SHOW ERRORS;
+Errors for TRIGGER TRIG1:
+
+LINE/COL ERROR
+-------- -----------------------------------------------------------------
+6/1      PL/SQL: SQL Statement ignored
+6/13     PL/SQL: ORA-00913: too many values
+SQL> @"F:\sarath\TRIGERS\TRIG2.txt"
+ 12  /
+
+Trigger created.
+
+SQL> INSERT INTO EMP_TAB VALUES('E07','ROY',35000,'DRIVER');
+
+1 row created.
+
+SQL> INSERT INTO EMP_TAB VALUES('E08','HUURRTIZZZZZZ',5345000,'BOSSSS');
+
+1 row created.
+
+SQL> UPDATE EMP_TAB SET SALARY=2000 WHERE ENO='E08';
+UPDATE EMP_TAB SET SALARY=2000 WHERE ENO='E08'
+                   *
+ERROR at line 1:
+ORA-00904: "SALARY": invalid identifier
+
+
+SQL> UPDATE EMP_TAB SET ESAL=2000 WHERE ENO='E08';
+
+1 row updated.
+
+SQL> SELECT * FROM EMP_TAB;
+
+ENO   ENAME                      ESAL JOB
+----- -------------------- ---------- --------------------
+E02   VARGHESE                  70000 ANALYST
+E03   URMILA                    90000 MANAGER
+E06   SANJAY                    20000 PROGRAMMER
+E07   ROY                       35000 DRIVER
+E08   HUURRTIZZZZZZ              2000 BOSSSS
+
+SQL> SELECT * FROM EMP_X;
+
+ENO   ENAME                      ESAL JOB                  X_DATE
+----- -------------------- ---------- -------------------- ---------
+E01   SHARISSA                  50000 MANAGER              09-OCT-23
+E04   SUDHA                      1000 CLERK                09-OCT-23
+E05   SALIM                     10000 PROGRAMMER           09-OCT-23
+
+SQL> SELECT * FROM EMP_MODIFIED;;
+SELECT * FROM EMP_MODIFIED;
+                          *
+ERROR at line 1:
+ORA-00911: invalid character
+
+
+SQL> SELECT * FROM EMP_MODIFIED;
+
+no rows selected
+
+SQL> SELECT * FROM EMP_NEW;
+
+no rows selected
+
+SQL> @"F:\sarath\TRIGERS\TRIG2.txt"
+ 12  /
+
+Trigger created.
+
+SQL> INSERT INTO EMP_TAB VALUES('E08','HUURRTIZZZZZZ',5345000,'BOSSSS');
+
+1 row created.
+
+SQL> SELECT * FROM EMP_NEW;
+
+no rows selected
+
+SQL> DELETE FROM EMP_TAB WHERE ENO='E08';
+
+2 rows deleted.
+
+SQL> SELECT * FROM EMP_X;
+
+ENO   ENAME                      ESAL JOB                  X_DATE
+----- -------------------- ---------- -------------------- ---------
+E01   SHARISSA                  50000 MANAGER              09-OCT-23
+E04   SUDHA                      1000 CLERK                09-OCT-23
+E05   SALIM                     10000 PROGRAMMER           09-OCT-23
+E08   HUURRTIZZZZZZ              2000 BOSSSS               09-OCT-23
+E08   HUURRTIZZZZZZ           5345000 BOSSSS               09-OCT-23
+
+SQL> SELECT * FROM EMP_NEW;
+
+no rows selected
+
+SQL> DESC EMP_NEW;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ENO                                                VARCHAR2(5)
+ ENAME                                              VARCHAR2(20)
+ ESAL                                               NUMBER(10,2)
+ JOB                                                VARCHAR2(20)
+
+SQL> SELECT * FROM EMP_NEW;
+
+no rows selected
+
+SQL> INSERT INTO EMP_TAB VALUES('E09','CRISTIANOOOOOO RONAAAAAAALDOOOOOO',5345000,'SSSS');
+INSERT INTO EMP_TAB VALUES('E09','CRISTIANOOOOOO RONAAAAAAALDOOOOOO',5345000,'SSSS')
+                                 *
+ERROR at line 1:
+ORA-12899: value too large for column "MCA"."EMP_TAB"."ENAME" (actual: 33,
+maximum: 20)
+
+
+SQL> INSERT INTO EMP_TAB VALUES('E09','CRISTIANOOOO',5345000,'SSSS');
+
+1 row created.
+
+SQL> SELECT * FROM EMP_NEW;
+
+no rows selected
+
+SQL> @"F:\sarath\TRIGERS\TRIG2.txt"
+ 11  /
+
+Trigger created.
+
+SQL> INSERT INTO EMP_TAB VALUES('E099','MESSI',5345000,'SSSS');
+
+1 row created.
+
+SQL> SELECT * FROM EMP_NEW;
+
+ENO   ENAME                      ESAL JOB
+----- -------------------- ---------- --------------------
+E099  MESSI                   5345000 SSSS
+
+SQL>

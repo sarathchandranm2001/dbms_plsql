@@ -1,0 +1,14 @@
+create or replace function palindrome_f(arg in varchar) return varchar
+as 
+str emplo varchar(100);
+rev varchar(100);
+begin
+	select upper(arg),reverse(upper(arg)) into str,rev from dual;
+	if rev=str
+	then
+ 	return 'palindrome';
+	else
+	return 'not palindrome;
+	end if;
+
+end;

@@ -1,0 +1,12 @@
+declare
+ano number(10);
+bal number(10); 
+begin
+ano:=&ano;
+select balance into bal from acc where accno=ano;
+if bal-2000<500 then 
+dbms_output.put_line('Transaction impossible due to insufficient balAnce');
+else
+update acc set balance=balance-2000 where accno=ano;
+end if;
+end;

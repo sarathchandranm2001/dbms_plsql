@@ -1,0 +1,9 @@
+create or replace procedure empt(a in char)
+as
+ename employee.empname%type;
+depno employee.deptno%type;
+begin 
+select empname,deptno into ename,depno from employee where empno=a;
+dbms_output.put_line('Name :'||ename);
+dbms_output.put_line('Deptno :'||depno);
+end;

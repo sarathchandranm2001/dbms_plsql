@@ -1,0 +1,12 @@
+declare
+num number;
+fac number;
+begin
+fac:=1; 
+num:=&num;
+while num > 0 loop
+fac:=fac*num;
+num:=num-1;
+end loop;
+dbms_output.put_line('Factorial is ' ||fac);
+end;

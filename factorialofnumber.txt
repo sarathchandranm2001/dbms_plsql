@@ -1,0 +1,14 @@
+declare
+num number;
+fac number;
+i number;
+begin
+fac:=1; 
+num:=&num;
+for i in 1..num loop
+fac:=fac*i;
+
+end loop;
+dbms_output.put_line('Factorial is ' ||fac);
+end;
+

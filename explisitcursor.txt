@@ -1,0 +1,19 @@
+declare 
+cursor empcur  is
+select empno,salary,empname from employee;
+emprec empcur%rowtype;
+begin
+dbms_output.put_line('Emp Details');
+open empcur;
+fetch empcur into emprec;
+while empcur%found 
+loop
+dbms_output.put_line('empno'||emprec.empno);
+dbms_output.put_line('empname'||emprec.empname);
+dbms_output.put_line('salary'||emprec.salary);
+dbms_output.put_line('**************************');
+fetch empcur into emprec;
+end loop;
+close empcur;
+
+end;
